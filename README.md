@@ -368,4 +368,3 @@ This page and data set is in the public domain under [17 U.S.C. 105](https://www
 
 ## Bibliography
 
-[TODO: fill this in]
