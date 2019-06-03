@@ -213,7 +213,7 @@ NITFVIS2008081614414101004702,1218897701310,4702,7743,15924075,SUV,gray,4.82,1.7
 NITFVIS2008081614414101004703,1218897701840,4703,7743,15924076,SUV,gray,4.82,1.77,9048,2875,39.7845246616604,-84.088486115833
 ```
 
-## Truth/Label Statistics
+### Truth/Label Statistics
 
 The Python code code/truth_stats.py was used to generate the statistics for the truth/label data below.
 
@@ -244,6 +244,12 @@ The Python code code/truth_stats.py was used to generate the statistics for the 
 
 Due to the difficulties with tracking moving objects in SAR a large amount of 
 parked vehicles was truthed in the UNICORN data set.
+
+### List of Static Objects
+
+[The list of static objects](images/UNICORN_Static_Object_List.pdf) includes a map plus
+static object list of reflectors that reflect EM energy which can be easily spotted in
+the RADAR data.
 
 ## <a name="bulk_data_access"></a> Bulk Data Access - Amazon S3
 <!-- This section is based on http://arxiv.org/help/bulk_data_s3 -->
