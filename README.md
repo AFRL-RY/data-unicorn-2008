@@ -199,7 +199,7 @@ In addition to the MySQL data dump file we have taken the liberty to
 convert the file into a single comma separated value (CSV) file to ease
 processing of the truth file. The CSV file is stored here
 s3://sdms-unicorn-2008/20080816_UNICORN_truth_csv.zip.  The
-script [code/convert_sqlite3_to_csv.py](code/convert_sqlite3_to_csv.py) was used
+script [code/convert_sqlite3_truth_csv.py](code/convert_sqlite3_truth_csv.py) was used
 to convert the SQLite3 database to CSV.  It is an easily modifiable script in
 case your research requires additional fields. The CSV file includes the field
 names on the first line of the file.  A snippet of the CSV file is included
