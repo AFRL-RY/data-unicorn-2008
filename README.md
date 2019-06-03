@@ -323,8 +323,7 @@ data set it would cost $35.46. This assumes AWS download fees are $0.09 a gigaby
 This does not include the raw SAR phase history, which is in the range of ~4TB.
 Downloading this would cost ~$360.
 
-If you wish to acquire the raw phase history, please contact Todd Rovito of 
-AFRL/RYAT.
+If you wish to acquire the raw phase history, please create an issue.
 
 Most researchers will not require the entire UNICORN 2008 data set, carefully
 consider the data that you require to meet your research needs and download
