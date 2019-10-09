@@ -315,7 +315,7 @@ s3cmd --requester-pays --recursive --human du s3://sdms-unicorn-2008/
 To retrieve a file:
 
 ```bash
-s3cmd --requester-pays get s3://sdms-unicorn-2008/position_text.tar.gz
+s3cmd --requester-pays get s3://sdms-unicorn-2008/truth/20080816_UNICORN_GPS_Ground_Truth.zip
 ```
 
 We do not recommend that you use s3cmd sync capability because the number of
