@@ -6,7 +6,7 @@ First off, thanks for taking the time to contribute!
 
 ### Reporting Bugs
 
-Bugs are tracked as [GitLab](/../issues) issues. Create an issue and provide 
+Bugs are tracked as [GitHub](/../issues) issues. Create an issue and provide 
 the following information by filling in the `Bug` template.
 
 Explain the problem and include additional details to help maintainers 
@@ -21,7 +21,7 @@ reproduce the problem:
 
 ### Suggesting Enhancements
 
-Enhancement suggestions are tracked as [GitLab](/../issues) issues. Create an 
+Enhancement suggestions are tracked as [GitHub](/../issues) issues. Create an 
 issue and provide the following information by filling in the `Enhancement`
 template:
 
@@ -36,7 +36,7 @@ template:
 
 ### Documentation Styleguide
 
-- Use [GitLab Markdown](https://docs.gitlab.com/ee/user/markdown.html)
+- Use [GitHub Markdown](https://help.github.com/en/categories/writing-on-github)
 - Documentation has a column limit of 80 characters (some exceptions include 
   tables, URLs, code excerpts)
 - Use space characters for indentation (do not use tab characters)
