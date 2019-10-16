@@ -1,30 +1,56 @@
 # UNICORN 2008 Dataset Overview
 
 UNIfied COincident Optical and Radar for recognitioN (UNICORN).
-
+-   [Overview](#overview)
+-   [Airborne Sensor Hardware](#airborne-sensor-hardware)
+    -   [EO](#eo)
+    -   [SAR](#sar)
+-   [Coincident Information](#coincident-information)
+    -   [Temporal Overlap](#temporal-overlap)
+    -   [Geographical Overlap](#geographical-overlap)
+-   [Unicorn 2008 Data Products](#unicorn-2008-data-products)
+    -   [NITF Data](#nitf-data)
+-   [GPS Ground Truth](#gps-ground-truth)
+    -   [GPS Ground Truth Data Format](#gps-ground-truth-data-format)
+-   [Truth/Labels/Tracks](#truthlabelstracks)
+    -   [MySQL Tracks to sqlite3](#mysql-tracks-to-sqlite3)
+    -   [CSV file of the labels](#csv-file-of-the-labels)
+    -   [Truth/Label Statistics](#truthlabel-statistics)
+    -   [List of Static Objects](#list-of-static-objects)
+-   [<a name="bulk_data_access"></a> Bulk Data Access - Amazon
+    S3](#bulk-data-access---amazon-s3)
+    -   [Tools](#tools)
+    -   [s3cmd Example](#s3cmd-example)
+    -   [Optimizing Data Download
+        Costs](#optimizing-data-download-costs)
+-   [Updates](#updates)
+-   [Acknowledgments](#acknowledgments)
+-   [Citation](#citation)
+-   [Copyright information](#copyright-information)
+-   [Bibliography](#bibliography)
 ## Overview
 
 The UNICORN 2008 dataset is a multi-modality, partially truthed, simultaneous
-and coincident dataset, using both a Wide Area Motion Imagery (WAMI) large 
-format electro-optical (EO) sensor, and Wide Area Synthetic Aperture Radar 
+and coincident dataset, using both a Wide Area Motion Imagery (WAMI) large
+format electro-optical (EO) sensor, and Wide Area Synthetic Aperture Radar
 (SAR).
 
 ![Sample NITF images overlaid together, viewed using Pursuer](images/UnicornScreen_intro.png "Sample overlaid NITF images, viewed using Pursuer")
 
-The data was collected over Wright-Patterson Air Force Base using the 
+The data was collected over Wright-Patterson Air Force Base using the
 GOTCHA/NDU radar, and similar sensor to what was used for the [CLIF 2007 data
-collection](https://github.com/AFRL-RY/data-clif-2007). The EO data was 
-manually truthed, and GPS ground truth is provided for some targets as well. 
+collection](https://github.com/AFRL-RY/data-clif-2007). The EO data was
+manually truthed, and GPS ground truth is provided for some targets as well.
 Targets consist of various cars and trucks, along with radar reflectors. and
 other calibration targets.
 
-In 2008, the DCS radar was modified to achieve a 5 km diameter spot, while 
-maintaining radar resolution and sensitivity. In August 2008, AFRL performed 
+In 2008, the DCS radar was modified to achieve a 5 km diameter spot, while
+maintaining radar resolution and sensitivity. In August 2008, AFRL performed
 a data collection with the modified DCS radar along with EO WAMI asset.
 A fleet of 25 civilian vehicles were deployed at various locations. Finally,
-a set of 12 large quad-corner reflectors were distributed across the 5 km spot. 
-The location of each stationary vehicle and calibration target was recorded 
-using differential GPS.  Over 12 million labels are provided in the WAMI EO 
+a set of 12 large quad-corner reflectors were distributed across the 5 km spot.
+The location of each stationary vehicle and calibration target was recorded
+using differential GPS.  Over 12 million labels are provided in the WAMI EO
 data.
 
 ## Airborne Sensor Hardware
@@ -60,23 +86,23 @@ basis.
 ![NDU/Gotcha Antenna System](images/GOTCHA_Radar.png "NDU/Gotcha Antenna System")
 
 ## Coincident Information
-All the data in question was collected on 2008-08-16. 
+All the data in question was collected on 2008-08-16.
 
 ### Temporal Overlap
-The SAR NITFs go from 14:33:02 UTC to 15:16:55 UTC. 
+The SAR NITFs go from 14:33:02 UTC to 15:16:55 UTC.
 The EO NITFs go from 14:41:40 UTC to 16:36:14 UTC.
 
 Therefore, we have data for both sensors from 14:41:40 UTC to 15:16:55 UTC.
 
 ### Geographical Overlap
 
-The EO coverage moves around quite a bit, but seems centered on the 
+The EO coverage moves around quite a bit, but seems centered on the
 southeast corner of the Wright-Patterson Air Force Base Area B runway triangle.
 The SAR coverage forms a square, steady swath, exactly 5kmX5km,
 apparently also centered on the southeast corner of the runway. Targets near
-the corner at 39.7760017, -84.0976938 should be visible in both modalities. 
+the corner at 39.7760017, -84.0976938 should be visible in both modalities.
 
-This was confirmed by inspecting via Pursuer: 
+This was confirmed by inspecting via Pursuer:
 
 EO/SAR images of Nissan Altima at ground station:
 ![Nissan Altima at start time, EO](images/EO_Nissan_Altima_start_time_and_location.png "EO image of Nissan Altima at beginning of coincident section")
@@ -86,9 +112,9 @@ EO/SAR images of Nissan Altima on runway:
 ![Nissan Altima at end time, EO](images/EO_Nissan_Altima_end_time_and_location.png "EO image of Nissan Altima at end of coincident section")
 ![Nissan Altima at end time, SAR](images/SAR_Nissan_Altima_end_time_and_location.png "SAR image of Nissan Altima at end of coincident section")
 
-Viewing remote sensing data with a high update rate can be a challenge 
-additionally the UNICORN data set has two sensor streams, a remote 
-sensing viewer that can visualziae both sensor streams of the UNICORN 
+Viewing remote sensing data with a high update rate can be a challenge
+additionally the UNICORN data set has two sensor streams, a remote
+sensing viewer that can visualziae both sensor streams of the UNICORN
 data with considertation for temporal aspects is Pursuer version 2.4.
 Pursuer is available at the FOUO DIST C level.  
 
@@ -115,8 +141,8 @@ EO/SAR overlaid together in Pursuer highest resolution [click for full resolutio
 is the DoD standard for imagery. Bascially a NITF file is a large
 header with the data concatenated onto the rear of the file.  The data
 or image  is stored in blocks of jpeg 6.2 compressed images of 128 x 128 size. The
-easiest way to read NITF data is to use 
-[Geospatial Data Abstraction Layer (GDAL)](https://en.m.wikipedia.org/wiki/GDAL). 
+easiest way to read NITF data is to use
+[Geospatial Data Abstraction Layer (GDAL)](https://en.m.wikipedia.org/wiki/GDAL).
 Example Python code is provided [code/NITFPythonGDAL.py](code/NITFPythonGDAL.py) that will
 read the NITF file then plot the image in a matplotlib plot.
 
@@ -136,7 +162,7 @@ See the [bulk data access section](#bulk_data_access) at the end of mark down fi
 for instructions on how to download the NITF imagery.
 
 ## GPS Ground Truth
-GPS ground truth is provided for 11 targets that were present on the day of the 
+GPS ground truth is provided for 11 targets that were present on the day of the
 data collection:
 
 * 1992 Chevy Blazer
@@ -154,8 +180,8 @@ data collection:
 ### GPS Ground Truth Data Format
 
 For each target a single comma sperated value (CSV) with the first line containing
-description of the fields is provided. These labels are provided in the data set and stored in 
-s3://sdms-unicorn-2008/20080816_UNICORN_GPS_Ground_Truth.zip. Example GPS 
+description of the fields is provided. These labels are provided in the data set and stored in
+s3://sdms-unicorn-2008/20080816_UNICORN_GPS_Ground_Truth.zip. Example GPS
 Ground Truth Data is provided below:
 
 ```bash
@@ -167,20 +193,20 @@ Status, Latitude(DecDegrees), RefrncDirctn, Longitude(DecDegrees), RefrncDirctn,
 
 ## Truth/Labels/Tracks
 
-A variety of objects in the scene were tracked and truthed (or labeled) by humans. 
-These labels are provided in the data set and stored in 
-s3://sdms-unicorn-2008/20080816_UNICORN_truth.zip. The truth data was generated with 
-AFRL Sensor Directorate's WAMITT tool and is provided in a MySQL dump text file. 
-The relational database structure is shown in 
-[WAMITT relational DB design](images/wamittEr_v2.png). Truth or labels were 
+A variety of objects in the scene were tracked and truthed (or labeled) by humans.
+These labels are provided in the data set and stored in
+s3://sdms-unicorn-2008/20080816_UNICORN_truth.zip. The truth data was generated with
+AFRL Sensor Directorate's WAMITT tool and is provided in a MySQL dump text file.
+The relational database structure is shown in
+[WAMITT relational DB design](images/wamittEr_v2.png). Truth or labels were
 derived from the NITF EO files.
 
 ### MySQL Tracks to sqlite3
 
-Sqlite3 is easier to work with for some users because sqlite3 does not require 
+Sqlite3 is easier to work with for some users because sqlite3 does not require
 a server install of the MySQL database. To convert from MySQL dump sql file format
 to sqlite3 see the [script on github](https://github.com/dumblob/mysql2sqlite).
-The labels in sqlite3 database format are stored 
+The labels in sqlite3 database format are stored
 s3://sdms-unicorn-2008/20080816_UNICORN_truth_sqlite3.zip. An example command to
 convert the WAMITT tracks is:
 
@@ -242,7 +268,7 @@ The Python code code/truth_stats.py was used to generate the statistics for the 
 		* van: 531,646
 		* van w/trailer: 3,745
 
-Due to the difficulties with tracking moving objects in SAR a large amount of 
+Due to the difficulties with tracking moving objects in SAR a large amount of
 parked vehicles was truthed in the UNICORN data set.
 
 ### List of Static Objects
@@ -358,13 +384,13 @@ Todd Rovito and Olga Mendoza-Schrock were supported under an AFOSR grant in
 When reporting results that use the Unicorn 2008 dataset, please cite:
 
 Colin Leong<sup>2</sup>, Todd Rovito<sup>1</sup>, Olga Mendoza-Schrock<sup>1</sup>,
-Jason Bowser<sup>2</sup>, Linda Moore<sup>1</sup>, Steve Scarborough<sup>1</sup>, 
-Michael Minardi<sup>3</sup>, David Hascher<sup>4</sup>. Unified Coincident 
-Optical and Radar for Recognition (UNICORN) 2008 Dataset. 
+Jason Bowser<sup>2</sup>, Linda Moore<sup>1</sup>, Steve Scarborough<sup>1</sup>,
+Michael Minardi<sup>3</sup>, David Hascher<sup>4</sup>. Unified Coincident
+Optical and Radar for Recognition (UNICORN) 2008 Dataset.
 https://github.com/AFRL-RY/data-unicorn-2008, 2019
 
 1. AFRL/Sensors Directorate/RYA 2241 Avionics Circle, Wright-Patterson AFB, Ohio 45433
-2. University of Dayton Research Institute (UDRI), 300 College Park, Dayton, Ohio 45469 
+2. University of Dayton Research Institute (UDRI), 300 College Park, Dayton, Ohio 45469
 3. Matrix Research Inc 1300 Research Park Dr, Beavercreek, Ohio 45432
 4. Applied Research Solutions 51 Plum St. Suite 240 Bevercreek, Ohio 45440
 
@@ -373,4 +399,3 @@ https://github.com/AFRL-RY/data-unicorn-2008, 2019
 This page and data set is in the public domain under [17 U.S.C. 105](https://www.law.cornell.edu/uscode/text/17/105).
 
 ## Bibliography
-
