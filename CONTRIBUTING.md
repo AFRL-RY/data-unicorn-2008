@@ -6,7 +6,7 @@ First off, thanks for taking the time to contribute!
 
 ### Reporting Bugs
 
-Bugs are tracked as [GitHub](/../issues) issues. Create an issue and provide 
+Bugs are tracked as [GitHub](https://github.com/AFRL-RY/data-unicorn-2008/issues) issues. Create an issue and provide 
 the following information by filling in the `Bug` template.
 
 Explain the problem and include additional details to help maintainers 
@@ -21,7 +21,7 @@ reproduce the problem:
 
 ### Suggesting Enhancements
 
-Enhancement suggestions are tracked as [GitHub](/../issues) issues. Create an 
+Enhancement suggestions are tracked as [GitHub](https://github.com/AFRL-RY/data-unicorn-2008/issues) issues. Create an 
 issue and provide the following information by filling in the `Enhancement`
 template:
 
