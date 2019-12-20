@@ -357,12 +357,6 @@ files and size of the UNICORN data set is large and errors will result.
 
 The UNICORN 2008 data set is large at approximately 394 GB, to download the entire
 data set it would cost $35.46. This assumes AWS download fees are $0.09 a gigabyte.
-
-This does not include the raw SAR phase history, which is in the range of ~4TB.
-Downloading this would cost ~$360.
-
-If you wish to acquire the raw phase history, please create an issue.
-
 Most researchers will not require the entire UNICORN 2008 data set, carefully
 consider the data that you require to meet your research needs and download
 costs.  We have divided the dataset into small tarballs to make the download
