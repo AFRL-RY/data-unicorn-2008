@@ -50,7 +50,7 @@ a data collection with the modified DCS radar along with EO WAMI asset.
 A fleet of 25 civilian vehicles were deployed at various locations. Finally,
 a set of 12 large quad-corner reflectors were distributed across the 5 km spot.
 The location of each stationary vehicle and calibration target was recorded
-using differential GPS.  Over 12 million labels are provided in the WAMI EO
+using differential GPS.  Over 4 million labels are provided in the WAMI EO
 data.
 
 ## Airborne Sensor Hardware
@@ -82,6 +82,9 @@ dish antennas) plus two Trifurcated Horn antennas mounted between the center and
 the antennas are cabled/plubmed to the radar to allow Gotcha operation (5km swath HH polarization through
 the horn antennas) and NDU multi-phase center (~1 KM swath H and V polarization) operation on a pass-by-pass
 basis.
+
+The SAR images are formed at a frequency of approximately 2 frames per second, like the EO. However,
+the SAR frames do not line up precisely with the EO frames in time.
 
 ![NDU/Gotcha Antenna System](images/GOTCHA_Radar.png "NDU/Gotcha Antenna System")
 
@@ -177,6 +180,8 @@ data collection:
 * 2007 Saturn Ion
 * 2002 Subaru Station Wagon
 
+Further information on these vehicles/drivers is no longer available.
+
 ### GPS Ground Truth Data Format
 
 For each target a single comma sperated value (CSV) with the first line containing
@@ -211,10 +216,6 @@ s3://sdms-unicorn-2008/20080816_UNICORN_truth_sqlite3.zip. An example command to
 convert the WAMITT tracks is:
 
 ```bash
-./mmysql2sqlite wamitt_gotcha_v01.sql | sqlite3 wamitt_gotcha_v01.db
-./mmysql2sqlite wamitt_gotcha_v02.sql | sqlite3 wamitt_gotcha_v02.db
-./mmysql2sqlite wamitt_gotcha_v03.sql | sqlite3 wamitt_gotcha_v03.db
-./mmysql2sqlite wamitt_gotcha_v04.sql | sqlite3 wamitt_gotcha_v04.db
 ./mmysql2sqlite wamitt_gotcha_v05.sql | sqlite3 wamitt_gotcha_v05.db
 ```
 
@@ -224,7 +225,7 @@ convert the WAMITT tracks is:
 In addition to the MySQL data dump file we have taken the liberty to
 convert the file into a single comma separated value (CSV) file to ease
 processing of the truth file. The CSV file is stored here
-s3://sdms-unicorn-2008/20080816_UNICORN_truth_csv.zip.  The
+s3://sdms-unicorn-2008/20080816_UNICORN_truth_csv_corrected.zip.  The
 script [code/convert_sqlite3_truth_csv.py](code/convert_sqlite3_truth_csv.py) was used
 to convert the SQLite3 database to CSV.  It is an easily modifiable script in
 case your research requires additional fields. The CSV file includes the field
@@ -232,11 +233,12 @@ names on the first line of the file.  A snippet of the CSV file is included
 below:
 
 ```bash
-track_point.fileId,track_point.time,track_point.frame,track.id,track_point.id,target_type.name,color.color,track.length,track.width,track_point.x,track_point.y,track_point.latitude,track_point.longitude
-NITFVIS2008081614414001004700,1218897700350,4700,7743,15924061,SUV,gray,4.82,1.77,9216,2935,39.7844829464586,-84.0886010810624
-NITFVIS2008081614414001004701,1218897700790,4701,7743,15924071,SUV,gray,4.82,1.77,9224,2933,39.7844914764619,-84.0885647941102
-NITFVIS2008081614414101004702,1218897701310,4702,7743,15924075,SUV,gray,4.82,1.77,9133,3035,39.7844956265658,-84.0885370489355
-NITFVIS2008081614414101004703,1218897701840,4703,7743,15924076,SUV,gray,4.82,1.77,9048,2875,39.7845246616604,-84.088486115833
+track_point.fileId	track_point.time	track_point.frame	track.id	track_point.id	target_type.name	color.color	track.length	track.width	track_point.x	track_point.y	track_point.latitude	track_point.longitude
+NITFVIS2008081614414001004700	1218897700350	4700	7743	15924061	SUV	gray	4.82	1.77	9216	2935	39.7844829465	-84.0886010811
+NITFVIS2008081614414001004701	1218897700790	4701	7743	15924071	SUV	gray	4.82	1.77	9224	2933	39.7844914765	-84.0885647941
+NITFVIS2008081614414101004702	1218897701310	4702	7743	15924075	SUV	gray	4.82	1.77	9133	3035	39.7844956266	-84.0885370489
+NITFVIS2008081614414101004703	1218897701840	4703	7743	15924076	SUV	gray	4.82	1.77	9048	2875	39.7845246617	-84.0884861158
+NITFVIS2008081614414201004704	1218897702370	4704	7743	15924083	SUV	gray	4.82	1.77	9055	2869	39.784548894	-84.0884561219
 ```
 
 ### Truth/Label Statistics
@@ -244,32 +246,34 @@ NITFVIS2008081614414101004703,1218897701840,4703,7743,15924076,SUV,gray,4.82,1.7
 The Python code code/truth_stats.py was used to generate the statistics for the truth/label data below.
 
 * Total number of images with truth data: 6,471
-* Total count of objects truthed: 12,766,950
+* Total count of objects truthed: 4,470,837
 	* The count of each object type
-		* SUV: 1,248,213
-		* SUV w/trailer: 19,445
-		* bicycle: 936
-		* boat: 236
-		* box truck: 88,486
-		* bus: 38,243
-		* dismount: 6,627
-		* dump truck: 2,398
-		* flatbed truck: 20,880
-		* flatbed truck w/trailer: 4,697
-		* motorcycle: 55,122
-		* other: 113,271
-		* pickup truck: 589,348
-		* pickup truck w/trailer: 35,163
-		* plane: 19,269
-		* sedan: 9,912,570
-		* sedan w/trailer: 15,300
-		* semi: 21,270
-		* semi w/trailer: 40,085
-		* van: 531,646
-		* van w/trailer: 3,745
+		  * SUV: 461,816
+          * SUV w/trailer: 6,119
+          * bicycle: 416
+          * boat: 105
+          * box truck: 30,555
+          * bus: 10,515
+          * dismount: 1,717
+          * dump truck: 1,201
+          * flatbed truck: 13,220
+          * flatbed truck w/trailer: 3,556
+          * motorcycle: 26,645
+          * other: 48,288
+          * pickup truck: 222,896
+          * pickup truck w/trailer: 8,667
+          * plane: 4,664
+          * sedan: 3,433,853
+          * sedan w/trailer: 6,338
+          * semi: 4,925
+          * semi w/trailer: 12,200
+          * van: 170,739
+          * van w/trailer: 2,402
 
 Due to the difficulties with tracking moving objects in SAR a large amount of
 parked vehicles was truthed in the UNICORN data set.
+
+This truth is NOT 'complete coverage'. It does not label all of the vehicles present--there are many vehicles of each type in the scene that are not labeled! The truthers tried to, e.g., label a few vehicles out of every parking lot and road when there were many of them.
 
 ### List of Static Objects
 
@@ -383,7 +387,7 @@ Todd Rovito and Olga Mendoza-Schrock were supported under an AFOSR grant in
 ## Citation
 When reporting results that use the Unicorn 2008 dataset, please cite:
 
-Colin Leong<sup>2</sup>, Todd Rovito<sup>1</sup>, Olga Mendoza-Schrock<sup>1</sup>,
+Colin Leong<sup>2</sup>, Todd Rovito<sup>1</sup>, Olga Mendoza-Schrock<sup>1</sup>, Christopher Menart<sup>1</sup>,
 Jason Bowser<sup>2</sup>, Linda Moore<sup>1</sup>, Steve Scarborough<sup>1</sup>,
 Michael Minardi<sup>3</sup>, David Hascher<sup>4</sup>. Unified Coincident
 Optical and Radar for Recognition (UNICORN) 2008 Dataset.
