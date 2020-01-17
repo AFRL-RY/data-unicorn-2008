@@ -59,7 +59,7 @@ data.
 
 The EO sensor is a large format monochromatic electro-optical sensor comprised
 of a matrix of six cameras. The cameras, for this data collection, collect data
-at approximately 2 frames per second.  Only geo-projected NITF files are
+at approximately 2 frames per second.  Only geo-projected NITF files areand 
 available from this data collection, no raw files were collected.
 
 Sample Image:
@@ -246,8 +246,8 @@ NITFVIS2008081614414201004704	1218897702370	4704	7743	15924083	SUV	gray	4.82	1.7
 The Python code code/truth_stats.py was used to generate the statistics for the truth/label data below.
 
 * Total number of images with truth data: 6,471
-* Total count of objects truthed: 4,470,837
-	* The count of each object type
+* Total count of annotations/track points: 4,470,837
+* The count of annotations per object type
 		* SUV: 461,816
 		* SUV w/trailer: 6,119
 		* bicycle: 416
