@@ -246,8 +246,8 @@ NITFVIS2008081614414201004704	1218897702370	4704	7743	15924083	SUV	gray	4.82	1.7
 The Python code code/truth_stats.py was used to generate the statistics for the truth/label data below.
 
 * Total number of images with truth data: 6,471
-* Total count of objects truthed: 4,470,837
-	* The count of each object type
+* Total count of annotations/track points: 4,470,837
+	* The count of annotations per object type
 		  * SUV: 461,816
           * SUV w/trailer: 6,119
           * bicycle: 416
@@ -273,7 +273,7 @@ The Python code code/truth_stats.py was used to generate the statistics for the 
 Due to the difficulties with tracking moving objects in SAR a large amount of
 parked vehicles was truthed in the UNICORN data set.
 
-This truth is NOT 'complete coverage'. It does not label all of the vehicles present--there are many vehicles of each type in the scene that are not labeled! The truthers tried to, e.g., label a few vehicles out of every parking lot and road when there were many of them.
+This truth is NOT 'complete coverage'. It does not label all of the vehicles present in all frames--there are many vehicles of each type in the scene that are not labeled! The truthers tried to, e.g., label a few vehicles out of every parking lot and road when there were many of them.
 
 ### List of Static Objects
 
