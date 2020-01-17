@@ -247,28 +247,28 @@ The Python code code/truth_stats.py was used to generate the statistics for the 
 
 * Total number of images with truth data: 6,471
 * Total count of annotations/track points: 4,470,837
-* The count of annotations per object type
-		* SUV: 461,816
-		* SUV w/trailer: 6,119
-		* bicycle: 416
-		* boat: 105
-		* box truck: 30,555
-		* bus: 10,515
-		* dismount: 1,717
-		* dump truck: 1,201
-		* flatbed truck: 13,220
-		* flatbed truck w/trailer: 3,556
-		* motorcycle: 26,645
-		* other: 48,288
-		* pickup truck: 222,896
-		* pickup truck w/trailer: 8,667
-		* plane: 4,664
-		* sedan: 3,433,853
-		* sedan w/trailer: 6,338
-		* semi: 4,925
-		* semi w/trailer: 12,200
-		* van: 170,739
-		* van w/trailer: 2,402
+* The count of annotations per object type:
+	* SUV: 461,816
+	* SUV w/trailer: 6,119
+	* bicycle: 416
+	* boat: 105
+	* box truck: 30,555
+	* bus: 10,515
+	* dismount: 1,717
+	* dump truck: 1,201
+	* flatbed truck: 13,220
+	* flatbed truck w/trailer: 3,556
+	* motorcycle: 26,645
+	* other: 48,288
+	* pickup truck: 222,896
+	* pickup truck w/trailer: 8,667
+	* plane: 4,664
+	* sedan: 3,433,853
+	* sedan w/trailer: 6,338
+	* semi: 4,925
+	* semi w/trailer: 12,200
+	* van: 170,739
+	* van w/trailer: 2,402
 
 Due to the difficulties with tracking moving objects in SAR a large amount of
 parked vehicles was truthed in the UNICORN data set.
